@@ -33,6 +33,7 @@ module Rack
       if env['rack.input'].kind_of?(Tempfile)
         env['rack.input'].extend(EqlFix)
         tempfile = env['rack.input']
+        tempfile.binmode
       else
         tempfile = Tempfile.new('raw-upload.', @tmpdir)
         tempfile.binmode
