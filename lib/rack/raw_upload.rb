@@ -35,6 +35,7 @@ module Rack
         tempfile = env['rack.input']
       else
         tempfile = Tempfile.new('raw-upload.', @tmpdir)
+        tempfile.binmode
 
         # Can't get to produce a test case for this :-(
         env['rack.input'].each do |chunk|
